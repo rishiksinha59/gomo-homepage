@@ -47,7 +47,7 @@ export default function Footer({ data }: FooterProps) {
   };
 
   return (
-    <footer className="w-full bg-brand-footer text-brand-cream font-sans border-t border-white/10">
+    <footer className="w-full bg-brand-footer text-brand-cream font-sans border-t border-white/10 mt-[120px]">
       
       {/* 1. Giant Brand Header Banner */}
       {data.brand_text && (

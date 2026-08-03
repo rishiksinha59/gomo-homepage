@@ -85,7 +85,67 @@ export interface HeroSectionData {
   scroll_target?: string;
 }
 
-export type SectionData = HeroSectionData | { id: number; __component: string; [key: string]: unknown };
+export interface StatData {
+  id: number;
+  value?: string;
+  label?: string;
+}
+
+export interface AboutSectionData {
+  id: number;
+  __component: "sections.about-section";
+  tagline?: string;
+  heading?: string;
+  cta_label?: string;
+  cta_icon?: boolean;
+  image?: StrapiMedia;
+  description_1?: string;
+  description_2?: string;
+  stats?: StatData[];
+}
+
+export interface BrandItemData {
+  id: number;
+  name?: string;
+  logo?: StrapiMedia;
+}
+
+export interface BrandsSectionData {
+  id: number;
+  __component: "sections.brands-section";
+  tagline?: string;
+  brands?: BrandItemData[];
+}
+
+export interface TagData {
+  id: number;
+  label?: string;
+}
+
+export interface IndustryItemData {
+  id: number;
+  name?: string;
+  description?: string;
+  cta_label?: string;
+  cta_url?: string;
+  image?: StrapiMedia;
+  tags?: TagData[];
+}
+
+export interface IndustriesSectionData {
+  id: number;
+  __component: "sections.industries-section";
+  tagline?: string;
+  heading?: string;
+  industries?: IndustryItemData[];
+}
+
+export type SectionData =
+  | HeroSectionData
+  | AboutSectionData
+  | BrandsSectionData
+  | IndustriesSectionData
+  | { id: number; __component: string; [key: string]: unknown };
 
 export interface HomepageAttributes {
   id: number;
