@@ -72,11 +72,19 @@ export async function getGlobalData(): Promise<GlobalAttributes | null> {
 }
 
 /**
- * Fetch Homepage Single Type data with dynamic zone sections populated
+ * Fetch Homepage Single Type data with deep dynamic zone population (including brands logo media & industries)
  */
 export async function getHomepageData(): Promise<HomepageAttributes | null> {
   try {
-    const query = "populate[sections][populate]=*";
+    const query = [
+      "populate[sections][on][sections.hero-section][populate]=*",
+      "populate[sections][on][sections.about-section][populate][image]=true",
+      "populate[sections][on][sections.about-section][populate][stats]=*",
+      "populate[sections][on][sections.brands-section][populate][brands][populate]=logo",
+      "populate[sections][on][sections.industries-section][populate][industries][populate][image]=true",
+      "populate[sections][on][sections.industries-section][populate][industries][populate][tags]=*",
+    ].join("&");
+
     const response = await fetchStrapi<StrapiResponse<HomepageAttributes>>(`/api/homepage?${query}`);
     return response.data;
   } catch (error) {
