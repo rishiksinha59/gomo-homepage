@@ -72,7 +72,7 @@ export async function getGlobalData(): Promise<GlobalAttributes | null> {
 }
 
 /**
- * Fetch Homepage Single Type data with deep dynamic zone population (including brands logo media & industries)
+ * Fetch Homepage Single Type data with deep dynamic zone population
  */
 export async function getHomepageData(): Promise<HomepageAttributes | null> {
   try {
@@ -83,6 +83,10 @@ export async function getHomepageData(): Promise<HomepageAttributes | null> {
       "populate[sections][on][sections.brands-section][populate][brands][populate]=logo",
       "populate[sections][on][sections.industries-section][populate][industries][populate][image]=true",
       "populate[sections][on][sections.industries-section][populate][industries][populate][tags]=*",
+      "populate[sections][on][sections.features-section][populate][features][populate]=icon",
+      "populate[sections][on][sections.projects-section][populate][projects][populate]=image",
+      "populate[sections][on][sections.news-section][populate][articles][populate]=image",
+      "populate[sections][on][sections.cta-section][populate]=*",
     ].join("&");
 
     const response = await fetchStrapi<StrapiResponse<HomepageAttributes>>(`/api/homepage?${query}`);

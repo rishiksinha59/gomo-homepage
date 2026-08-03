@@ -5,7 +5,6 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { FooterData } from "@/lib/types";
 import { getStrapiMedia } from "@/lib/strapi";
-import Container from "./Container";
 
 const InstagramIcon = ({ className = "w-4 h-4" }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
@@ -58,8 +57,8 @@ export default function Footer({ data }: FooterProps) {
         </div>
       )}
 
-      {/* 2. Main Footer Content Grid */}
-      <Container className="py-16">
+      {/* 2. Main Footer Content Grid (Explicit 1440px Container) */}
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           
           {/* Dynamic Navigation Columns */}
@@ -195,12 +194,12 @@ export default function Footer({ data }: FooterProps) {
           </div>
 
         </div>
-      </Container>
+      </div>
 
-      {/* 3. Bottom Accent Bar in Brand Mauve (#A68AA4) */}
+      {/* 3. Bottom Accent Bar in Brand Mauve (#A68AA4) (Explicit 1440px Container) */}
       {bottomBar && (
         <div className="w-full bg-brand-mauve text-[#2C242A] py-3.5 text-xs font-serif">
-          <Container className="flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+          <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
             {bottomBar.rights_reserved && (
               <div>{bottomBar.rights_reserved}</div>
             )}
@@ -223,7 +222,7 @@ export default function Footer({ data }: FooterProps) {
                 ))}
               </div>
             )}
-          </Container>
+          </div>
         </div>
       )}
 

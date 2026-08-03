@@ -3,11 +3,19 @@ import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
 import BrandsSection from "./components/BrandsSection";
 import IndustriesSection from "./components/IndustriesSection";
+import FeaturesSection from "./components/FeaturesSection";
+import ProjectsSection from "./components/ProjectsSection";
+import NewsSection from "./components/NewsSection";
+import CtaSection from "./components/CtaSection";
 import {
   HeroSectionData,
   AboutSectionData,
   BrandsSectionData,
   IndustriesSectionData,
+  FeaturesSectionData,
+  ProjectsSectionData,
+  NewsSectionData,
+  CtaSectionData,
 } from "@/lib/types";
 
 export default async function Home() {
@@ -33,6 +41,18 @@ export default async function Home() {
         }
         if (section.__component === "sections.industries-section") {
           return <IndustriesSection key={uniqueKey} data={section as IndustriesSectionData} />;
+        }
+        if (section.__component === "sections.features-section") {
+          return <FeaturesSection key={uniqueKey} data={section as FeaturesSectionData} />;
+        }
+        if (section.__component === "sections.projects-section") {
+          return <ProjectsSection key={uniqueKey} data={section as ProjectsSectionData} />;
+        }
+        if (section.__component === "sections.news-section") {
+          return <NewsSection key={uniqueKey} data={section as NewsSectionData} />;
+        }
+        if (section.__component === "sections.cta-section") {
+          return <CtaSection key={uniqueKey} data={section as CtaSectionData} />;
         }
         return null;
       })}

@@ -19,7 +19,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
   return (
     <section className="w-full">
       <Container>
-
+        
         {/* 1. Header Section */}
         <div className="text-center max-w-[880px] mx-auto">
           {data.tagline && (
