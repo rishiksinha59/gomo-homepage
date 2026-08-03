@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Exact Figma Design Color Tokens */
+  --color-brand-cream: #F2EBE2;        /* Main background & footer sublinks */
+  --color-brand-dark: #1E2E31;         /* Navbar logo, nav links & CTA button */
+  --color-brand-dark-hover: #293E42;   /* Hover state for dark button */
+  --color-brand-footer: #222222;       /* Main Footer background */
+  --color-brand-watermark: #000000;    /* Giant Brand watermark text in footer */
+  --color-brand-white: #FFFFFF;        /* Section headings (Contact, Resources, etc.) */
+  --color-brand-sky: #B8D1D1;          /* Newsletter title ("Get trends tips...") */
+  --color-brand-mauve: #A68AA4;        /* All rights reserved / bottom bar background */
+
+  /* Typography Tokens */
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-larken: "Larken Thin", "Larken", serif;
+}
+
+body {
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-dark);
+}
