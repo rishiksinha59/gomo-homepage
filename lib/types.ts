@@ -140,11 +140,81 @@ export interface IndustriesSectionData {
   industries?: IndustryItemData[];
 }
 
+export interface FeatureCardData {
+  id: number;
+  title?: string;
+  description?: string;
+  icon?: StrapiMedia;
+}
+
+export interface FeaturesSectionData {
+  id: number;
+  __component: "sections.features-section";
+  tagline?: string;
+  heading?: string;
+  cta_label?: string;
+  cta_url?: string;
+  features?: FeatureCardData[];
+}
+
+export interface ProjectCardData {
+  id: number;
+  title?: string;
+  subtitle?: string;
+  cta_label?: string;
+  cta_url?: string;
+  image?: StrapiMedia;
+}
+
+export interface ProjectsSectionData {
+  id: number;
+  __component: "sections.projects-section";
+  tagline?: string;
+  heading?: string;
+  cta_label?: string;
+  cta_url?: string;
+  projects?: ProjectCardData[];
+}
+
+export interface ArticleCardData {
+  id: number;
+  badge?: string;
+  title?: string;
+  date?: string;
+  cta_label?: string;
+  cta_url?: string;
+  image?: StrapiMedia;
+}
+
+export interface NewsSectionData {
+  id: number;
+  __component: "sections.news-section";
+  tagline?: string;
+  heading?: string;
+  cta_label?: string;
+  cta_url?: string;
+  articles?: ArticleCardData[];
+}
+
+export interface CtaSectionData {
+  id: number;
+  __component: "sections.cta-section";
+  heading?: string;
+  cta_label?: string;
+  cta_url?: string;
+  background_image?: StrapiMedia;
+  logo?: StrapiMedia;
+}
+
 export type SectionData =
   | HeroSectionData
   | AboutSectionData
   | BrandsSectionData
   | IndustriesSectionData
+  | FeaturesSectionData
+  | ProjectsSectionData
+  | NewsSectionData
+  | CtaSectionData
   | { id: number; __component: string; [key: string]: unknown };
 
 export interface HomepageAttributes {

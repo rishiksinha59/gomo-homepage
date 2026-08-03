@@ -46,7 +46,7 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[15px] items-stretch w-full max-w-[1279px] mx-auto">
 
           {/* Left Column: Interactive Industry Selection Menu */}
-          <div className="bg-brand-dark rounded-[16px] p-8 md:p-12 flex flex-col justify-between min-h-[480px] lg:h-[570px] w-full shadow-lg text-white">
+          <div className="bg-brand-dark rounded-[10px] p-8 md:p-12 flex flex-col justify-between min-h-[480px] lg:h-[570px] w-full shadow-lg text-white">
             <div className="flex flex-col my-auto space-y-3 lg:space-y-4">
               {industries.map((item, index) => {
                 const isActive = index === activeIndex;
@@ -79,7 +79,7 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
           </div>
 
           {/* Right Column: Active Industry Preview Card with Frosted Glass Overlay */}
-          <div className="relative rounded-[16px] overflow-hidden min-h-[480px] lg:h-[570px] w-full shadow-lg text-white bg-zinc-900 group">
+          <div className="relative rounded-[10px] overflow-hidden min-h-[480px] lg:h-[570px] w-full shadow-lg text-white bg-dark group">
 
             {/* Background Image Layer */}
             {activeImageUrl ? (
@@ -94,8 +94,8 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
               />
             ) : null}
 
-            {/* Frosted Glassmorphism Overlay Box (Covers bottom 65% of the card) */}
-            <div className="absolute inset-x-0 bottom-0 top-[50%] bg-black/35 backdrop-blur-xl border-t border-white/15 flex flex-col justify-between z-10">
+            {/* Frosted Glassmorphism Overlay Box (Natural height auto-sizing overlay anchored at bottom) */}
+            <div className="absolute inset-x-0 bottom-0 z-10 bg-black/35 backdrop-blur-xl border-t border-white/15 flex flex-col justify-between">
 
               {/* Content Area Inside Glass (Explicit 48px bottom spacing before CTA bar) */}
               <div className="p-6 pb-[48px] flex flex-col justify-start">
