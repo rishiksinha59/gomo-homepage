@@ -30,7 +30,7 @@ export default function BrandsSection({ data }: BrandsSectionProps) {
       </Container>
 
       {/* Smart Full-Width Overflow Marquee Track (Extends edge-to-edge beyond Container) */}
-      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden py-2 select-none">
+      <div className="w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] overflow-hidden select-none">
         
         {/* Continuous Marquee Track */}
         <div className="animate-marquee flex items-center gap-4 sm:gap-6 px-4">

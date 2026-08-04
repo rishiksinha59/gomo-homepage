@@ -84,7 +84,7 @@ export default function Footer({ data }: FooterProps) {
   const legalLinks = bottomBar?.legal_links || [];
 
   return (
-    <footer className="w-full bg-brand-footer text-white/80 font-sans border-t border-white/10 mt-[120px]">
+    <footer className="w-full bg-brand-footer text-white/80 font-sans border-t border-white/10 mt-[120px] overflow-hidden">
 
       {/* 1. Giant Wall-to-Wall Brand Watermark Header */}
       {data.brand_text && (
@@ -97,7 +97,7 @@ export default function Footer({ data }: FooterProps) {
 
       {/* 2. Main Footer Content Grid (1440px Container) */}
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 pb-[74px]">
-        <div className="grid grid-cols-1 lg:grid-cols-[810px_1fr] gap-10 lg:gap-[146px]">
+        <div className="grid grid-cols-1 xl:grid-cols-[810px_1fr] gap-10 xl:gap-[146px]">
 
           {/* Left block: Nav + Contact (810px) */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -138,7 +138,7 @@ export default function Footer({ data }: FooterProps) {
               )}
 
               {data.email && (
-                <a href={`mailto:${data.email}`} className="hover:text-white transition-colors block">
+                <a href={`mailto:${data.email}`} className="hover:text-white transition-colors block break-words">
                   {data.email}
                 </a>
               )}
@@ -172,7 +172,7 @@ export default function Footer({ data }: FooterProps) {
           <div className="flex flex-col justify-between space-y-8">
             {data.newsletter_title && (
               <div>
-                <h3 className="text-2xl sm:text-[2.625rem] font-larken text-brand-sky leading-[1.25] tracking-tight mb-8">
+                <h3 className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.625rem] font-larken text-brand-sky leading-[1.25] tracking-tight mb-8">
                   {data.newsletter_title}
                 </h3>
 
@@ -204,7 +204,7 @@ export default function Footer({ data }: FooterProps) {
             )}
 
             {/* Certifications and Social Icons Row */}
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-col xl:flex-row items-start xl:items-center justify-between gap-6 xl:gap-4">
               {/* Certification Logos from Strapi */}
               {data.certification_logos && data.certification_logos.length > 0 && (
                 <div className="flex items-center gap-4">
@@ -252,21 +252,21 @@ export default function Footer({ data }: FooterProps) {
 
       {/* 3. Bottom Accent Bar in Mauve/Purple tone (1440px Container) */}
       <div className="w-full bg-brand-mauve text-brand-dark py-5.5 font-serif">
-        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 grid grid-cols-1 lg:grid-cols-[810px_1fr] gap-4 lg:gap-[146px] items-center">
+        <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-6 md:px-10 grid grid-cols-1 xl:grid-cols-[810px_1fr] gap-4 xl:gap-[146px] items-center">
 
           {/* Left block (810px): Rights reserved (col-span-3) + Copyright (col 4, aligned with Contact) */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center text-center sm:text-left">
-            <div className="md:col-span-3">
+          <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 sm:gap-4 xl:gap-8 items-center text-center xl:text-left">
+            <div className="xl:col-span-3 text-center xl:text-left">
               {bottomBar?.rights_reserved || "All rights reserved"}
             </div>
-            <div className=" whitespace-nowrap w-fit">
+            <div className="whitespace-nowrap w-fit mx-auto xl:mx-0 text-center xl:text-left">
               {bottomBar?.copyright_text || "© Brand 2026"}
             </div>
           </div>
 
           {/* Right block (404px): Legal links aligned to right */}
           {legalLinks.length > 0 && (
-            <div className="flex items-center gap-1 flex-wrap justify-center lg:justify-end">
+            <div className="flex items-center gap-1 flex-wrap justify-center xl:justify-end">
               {legalLinks.map((link, idx) => (
                 <span key={link.id} className="flex items-center">
                   <Link href={link.url || "#"} className="hover:underline font-sans text-brand-dark">

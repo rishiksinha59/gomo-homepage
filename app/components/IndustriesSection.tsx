@@ -28,7 +28,7 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
       <Container>
 
         {/* 1. Header Section */}
-        <div className="text-center max-w-[880px] mx-auto mb-12 sm:mb-16">
+        <div className="text-center max-w-[920px] mx-auto mb-12 sm:mb-16 px-[80px]">
           {data.tagline && (
             <p className="font-larken font-thin text-dark mb-4">
               {data.tagline}
@@ -46,8 +46,8 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[15px] items-stretch w-full max-w-[1279px] mx-auto">
 
           {/* Left Column: Interactive Industry Selection Menu */}
-          <div className="bg-brand-dark rounded-[10px] p-8 md:p-12 flex flex-col justify-between min-h-[480px] lg:h-[570px] w-full shadow-lg text-white">
-            <div className="flex flex-col my-auto space-y-3 lg:space-y-4">
+          <div className="bg-brand-dark rounded-[10px] p-8 md:p-12 flex flex-col justify-between lg:h-[570px] w-full shadow-lg text-white">
+            <div className="flex flex-col space-y-3 lg:space-y-4">
               {industries.map((item, index) => {
                 const isActive = index === activeIndex;
 
@@ -60,10 +60,10 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
                     className="w-full text-left flex items-center justify-between group transition-all duration-200 outline-none"
                   >
                     <span
-                      className={`font-larken transition-colors duration-200 ${
+                      className={`font-larken transition-colors duration-200 leading-[1.3] ${
                         isActive
-                          ? "text-2xl sm:text-3xl md:text-[38px] text-white font-normal"
-                          : "text-xl sm:text-2xl md:text-[34px] text-white/35 group-hover:text-white/70 font-normal"
+                          ? "text-2xl sm:text-3xl md:text-[42px] text-white font-normal"
+                          : "text-2xl sm:text-3xl md:text-[42px] text-white/35 group-hover:text-white/70 font-normal"
                       }`}
                     >
                       {item.name}
@@ -102,7 +102,7 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
 
                 {/* Active Industry Title */}
                 {activeIndustry.name && (
-                  <h3 className="font-sans font-normal text-2xl md:text-3xl tracking-tight text-white mb-3">
+                  <h3 className="font-sans font-normal text-2xl tracking-tight text-white mb-3">
                     {activeIndustry.name}
                   </h3>
                 )}

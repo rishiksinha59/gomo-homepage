@@ -24,7 +24,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
         <div className="max-w-[1280px] mx-auto w-full">
 
           {/* 1. Header Section */}
-          <div className="text-center max-w-[880px] mx-auto">
+          <div className="text-center max-w-[920px] mx-auto">
             {data.tagline && (
               <p className="font-larken font-thin text-dark mb-4">
                 {data.tagline}
@@ -86,7 +86,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
           {/* 3. Bottom Stats Row (Flexbox with border divider) */}
           {data.stats && data.stats.length > 0 && (
-            <div className="border-t border-brand-dark/15 mt-10 pt-6">
+            <div className="border-t border-brand-dark/35 mt-10 pt-6">
               <div className="flex flex-wrap items-center justify-between gap-8 md:gap-12">
                 {data.stats.map((stat, idx) => (
                   <div key={`${stat.id || idx}-${idx}`} className="flex flex-col text-left gap-1">
