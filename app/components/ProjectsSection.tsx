@@ -152,7 +152,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                 <div
                   key={`${project.id || idx}-${idx}`}
                   onClick={() => setActiveIndex(idx)}
-                  className="w-[280px] sm:w-[360px] md:w-[442px] h-[380px] sm:h-[450px] md:h-[520px] rounded-[16px] overflow-hidden relative shrink-0 shadow-lg text-white group cursor-pointer transition-all duration-300"
+                  className="w-[280px] sm:w-[360px] md:w-[442px] h-[380px] sm:h-[450px] md:h-[520px] rounded-[10px] overflow-hidden relative shrink-0 shadow-lg text-white group cursor-pointer transition-all duration-300"
                 >
                   {/* Background Image */}
                   {imageUrl ? (

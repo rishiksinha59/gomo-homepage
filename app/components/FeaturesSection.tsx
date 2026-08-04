@@ -24,7 +24,7 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
       <Container>
 
         {/* Outer Card Container with max-w-[1280px] container */}
-        <div className="w-full max-w-[1280px] mx-auto bg-[#B8D1D1] rounded-[16px] overflow-hidden text-brand-dark shadow-xs border border-brand-dark/10">
+        <div className="w-full max-w-[1280px] mx-auto bg-[#B8D1D1] rounded-[10px] overflow-hidden text-brand-dark shadow-xs border border-brand-dark/10">
 
           {/* 1. Top Header Area */}
           <div className="pt-12 sm:pt-20 pb-12 sm:pb-16 px-6 sm:px-10 text-center max-w-[850px] mx-auto flex flex-col items-center">

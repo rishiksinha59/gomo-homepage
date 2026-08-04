@@ -54,7 +54,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
           <div className="mt-14 sm:mt-16 flex flex-col lg:flex-row items-start gap-10 lg:gap-20">
 
             {/* Left: Feature Image (568px x 320px) */}
-            <div className="relative w-full lg:w-[568px] h-[320px] rounded-[16px] overflow-hidden shadow-sm shrink-0">
+            <div className="relative w-full lg:w-[568px] h-[320px] rounded-[10px] overflow-hidden shadow-sm shrink-0">
               {imageUrl ? (
                 <Image
                   src={imageUrl}

@@ -40,7 +40,7 @@ export default function BrandsSection({ data }: BrandsSectionProps) {
             return (
               <div
                 key={`${brand.id}-${index}`}
-                className="border border-brand-dark/10 rounded-[14px] px-6 sm:px-8 py-4 sm:py-5 flex items-center justify-center min-w-[200px] h-24 shadow-xs flex-shrink-0 hover:border-brand-dark/20 transition-all"
+                className="border border-brand-dark/10 rounded-[7px] px-6 sm:px-8 py-4 sm:py-5 flex items-center justify-center min-w-[200px] h-24 shadow-xs flex-shrink-0 hover:border-brand-dark/20 transition-all"
               >
                 {logoUrl ? (
                   <div className="relative w-full h-full flex items-center justify-center">
