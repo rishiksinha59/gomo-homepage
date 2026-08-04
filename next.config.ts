@@ -5,6 +5,9 @@ const nextConfig: NextConfig = {
     qualities: [75, 80],
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 31536000,
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: "http",

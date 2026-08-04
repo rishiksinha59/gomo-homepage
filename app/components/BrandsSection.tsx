@@ -47,6 +47,7 @@ export default function BrandsSection({ data }: BrandsSectionProps) {
                       alt={brand.name || "Brand Logo"}
                       width={160}
                       height={60}
+                      unoptimized
                       className="max-h-[38px] sm:max-h-[44px] w-auto object-contain filter grayscale opacity-85 hover:grayscale-0 hover:opacity-100 transition-all"
                     />
                   </div>

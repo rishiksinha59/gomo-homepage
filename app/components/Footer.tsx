@@ -136,6 +136,7 @@ export default function Footer({ data }: FooterProps) {
                           alt={logo.name || "ISO Certification Logo"}
                           fill
                           sizes="183px"
+                          unoptimized
                           className="object-contain object-left opacity-90"
                         />
                       </div>

@@ -69,6 +69,7 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
                           alt={feature.title || "Feature Icon"}
                           width={32}
                           height={32}
+                          unoptimized
                           className="w-8 h-8 object-contain"
                         />
                       ) : (
