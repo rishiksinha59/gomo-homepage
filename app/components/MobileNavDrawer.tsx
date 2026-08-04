@@ -47,6 +47,7 @@ export default function MobileNavDrawer({ data }: MobileNavDrawerProps) {
                   <Link
                     key={link.id}
                     href={link.url || "#"}
+                    prefetch={false}
                     onClick={() => setMobileMenuOpen(false)}
                     className="text-brand-dark text-sm font-medium hover:opacity-75 flex items-center justify-between py-1 transition-opacity"
                   >

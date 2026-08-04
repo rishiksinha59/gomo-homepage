@@ -66,7 +66,8 @@ export default function NewsSection({ data, externalPosts }: NewsSectionProps) {
           {data.cta_label && (
             <Link
               href={data.cta_url || "/news"}
-              className="inline-flex items-center gap-1.5 text-xs  font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
+              prefetch={false}
+              className="inline-flex items-center gap-1.5 text-xs font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
             >
               <span>{data.cta_label}</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[1.75]" />
@@ -129,6 +130,7 @@ export default function NewsSection({ data, externalPosts }: NewsSectionProps) {
                     <div className="px-4 sm:px-6 flex items-center shrink-0">
                       <Link
                         href={article.cta_url || "#"}
+                        prefetch={false}
                         className="inline-flex items-center gap-1 text-white hover:underline font-medium text-xs sm:text-sm shrink-0 group/link"
                       >
                         <span>{article.cta_label || "Read more"}</span>

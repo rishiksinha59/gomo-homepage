@@ -71,6 +71,7 @@ export default function CtaSection({ data }: CtaSectionProps) {
             {data.cta_label && (
               <Link
                 href={data.cta_url || "/contact"}
+                prefetch={false}
                 className="bg-white hover:bg-white/90 text-brand-dark font-sans text-sm sm:text-base font-normal px-9 py-3.5 rounded-full shadow-md transition-all transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 {data.cta_label}

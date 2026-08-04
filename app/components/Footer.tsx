@@ -57,6 +57,7 @@ export default function Footer({ data }: FooterProps) {
                         <li key={link.id}>
                           <Link
                             href={link.url || "#"}
+                            prefetch={false}
                             className="hover:text-white transition-colors block font-sans whitespace-nowrap"
                           >
                             {link.label}
@@ -189,7 +190,7 @@ export default function Footer({ data }: FooterProps) {
             <div className="flex items-center gap-1 flex-wrap justify-center xl:justify-end">
               {legalLinks.map((link, idx) => (
                 <span key={link.id} className="flex items-center">
-                  <Link href={link.url || "#"} className="hover:underline font-sans text-brand-dark">
+                  <Link href={link.url || "#"} prefetch={false} className="hover:underline font-sans text-brand-dark">
                     {link.label}
                   </Link>
                   {idx < legalLinks.length - 1 && (

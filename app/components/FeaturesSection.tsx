@@ -41,6 +41,7 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
             {data.cta_label && (
               <Link
                 href={data.cta_url || "/contact"}
+                prefetch={false}
                 className="inline-flex items-center gap-1.5 text-xs  font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
               >
                 <span>{data.cta_label}</span>

@@ -113,6 +113,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
           {data.cta_label && (
             <Link
               href={data.cta_url || "/cases"}
+              prefetch={false}
               className="inline-flex items-center gap-1.5 text-xs  font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
             >
               <span>{data.cta_label}</span>
@@ -188,6 +189,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                       <div className="px-3 sm:px-6 flex items-center shrink-0">
                         <Link
                           href={project.cta_url || "#"}
+                          prefetch={false}
                           className="inline-flex items-center gap-1 font-normal text-white hover:underline font-medium text-xs sm:text-base shrink-0 group/link"
                         >
                           <span>{project.cta_label || "Read case"}</span>

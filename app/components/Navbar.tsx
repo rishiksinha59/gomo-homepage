@@ -35,6 +35,7 @@ export default function Navbar({ data }: NavbarProps) {
                 <Link
                   key={link.id}
                   href={link.url || "#"}
+                  prefetch={false}
                   className="text-brand-dark text-sm font-normal hover:opacity-75 flex items-center transition-opacity whitespace-nowrap"
                 >
                   <span>{link.label}</span>
@@ -64,6 +65,7 @@ export default function Navbar({ data }: NavbarProps) {
           {data.cta_label && (
             <Link
               href="/contact"
+              prefetch={false}
               className="bg-brand-dark hover:bg-brand-dark-hover text-white px-5 py-2.5 xl:px-9 xl:py-[14px] rounded-full font-medium transition-colors shadow-xs whitespace-nowrap"
             >
               {data.cta_label}

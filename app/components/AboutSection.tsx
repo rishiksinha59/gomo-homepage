@@ -39,6 +39,7 @@ export default function AboutSection({ data }: AboutSectionProps) {
               <div className="mt-6">
                 <Link
                   href="/about"
+                  prefetch={false}
                   className="inline-flex items-center text-xs font-normal text-dark underline underline-offset-4 transition-colors"
                 >
                   <span>{data.cta_label}</span>

@@ -138,6 +138,7 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
                   <div className="flex-1 h-full border-r border-white/15" />
                   <Link
                     href={activeIndustry.cta_url || "#"}
+                    prefetch={false}
                     className="px-6 h-full flex items-center justify-center gap-2 font-sans text-white/90 hover:text-white transition-colors group/link hover:bg-white/5"
                   >
                     <span className="group-hover/link:underline">{activeIndustry.cta_label}</span>
