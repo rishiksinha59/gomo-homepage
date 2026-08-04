@@ -36,7 +36,7 @@ export default function CtaSection({ data }: CtaSectionProps) {
           )}
 
           {/* Dark Overlay for Text Readability */}
-          <div className="absolute inset-0 bg-black/45 z-10" />
+          <div className="absolute inset-0 bg-black/35 z-10" />
 
           {/* Content Layer (Relative z-20) */}
           <div className="relative z-20 flex flex-col items-center justify-center max-w-[750px] mx-auto text-center px-4">
@@ -73,7 +73,7 @@ export default function CtaSection({ data }: CtaSectionProps) {
             {data.cta_label && (
               <Link
                 href={data.cta_url || "/contact"}
-                className="bg-white hover:bg-white/90 text-brand-dark font-sans text-sm sm:text-base font-normal px-8 py-3.5 rounded-full shadow-md transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+                className="bg-white hover:bg-white/90 text-brand-dark font-sans text-sm sm:text-base font-normal px-9 py-3.5 rounded-full shadow-md transition-all transform hover:scale-[1.02] active:scale-[0.98]"
               >
                 {data.cta_label}
               </Link>

@@ -34,7 +34,7 @@ export default function HeroSection({ data }: HeroSectionProps) {
           )}
 
           {/* Dark Overlay for Text Legibility */}
-          <div className="absolute inset-0 bg-black/40 z-10" />
+          <div className="absolute inset-0 z-10" />
 
           {/* Content Layer (Relative z-20) */}
           {/* Top Tagline (36px distance from top edge of parent container) */}

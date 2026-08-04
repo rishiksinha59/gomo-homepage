@@ -152,7 +152,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                 <div
                   key={`${project.id || idx}-${idx}`}
                   onClick={() => setActiveIndex(idx)}
-                  className="w-[340px] sm:w-[400px] md:w-[442px] h-[500px] md:h-[520px] rounded-[16px] overflow-hidden relative shrink-0 shadow-lg text-white bg-zinc-900 group cursor-pointer transition-all duration-300"
+                  className="w-[280px] sm:w-[360px] md:w-[442px] h-[380px] sm:h-[450px] md:h-[520px] rounded-[16px] overflow-hidden relative shrink-0 shadow-lg text-white group cursor-pointer transition-all duration-300"
                 >
                   {/* Background Image */}
                   {imageUrl ? (
@@ -161,7 +161,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                       alt={project.title || "Project Image"}
                       fill
                       priority={idx < 4}
-                      sizes="(max-width: 768px) 340px, 430px"
+                      sizes="(max-width: 768px) 340px, 442px"
                       className="object-cover object-center transition-transform duration-700 group-hover:scale-105 pointer-events-none"
                     />
                   ) : null}
@@ -169,29 +169,29 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                   {/* Frosted Glass Overlay */}
                   <div className="absolute inset-x-0 bottom-0 z-10 bg-black/35 backdrop-blur-xl border-t border-white/15 flex flex-col justify-between pointer-events-auto">
                     {/* Title */}
-                    <div className="pl-6 py-4">
+                    <div className="px-4 sm:px-6 py-3 sm:py-4">
                       {project.title && (
-                        <h3 className="font-sans text-xl md:text-2xl font-normal tracking-tight text-white">
+                        <h3 className="font-sans text-base sm:text-xl md:text-2xl font-normal tracking-tight text-white line-clamp-1">
                           {project.title}
                         </h3>
                       )}
                     </div>
 
                     {/* Bottom Info & CTA Bar with vertical divider line */}
-                    <div className="border-t border-white/15 flex items-stretch h-[52px] font-sans text-white/90">
-                      <div className="flex-1 px-6 flex items-center border-r border-white/15 min-w-0">
-                        <span className="truncate text-white/80 font-sans text-xs sm:text-sm">
+                    <div className="border-t border-white/15 flex items-stretch h-[48px] sm:h-[52px] font-sans text-white/90">
+                      <div className="flex-1 px-3 sm:px-6 flex items-center border-r border-white/15 min-w-0">
+                        <span className="truncate text-white font-sans text-xs sm:text-sm">
                           {project.subtitle}
                         </span>
                       </div>
 
-                      <div className="px-6 flex items-center shrink-0">
+                      <div className="px-3 sm:px-6 flex items-center shrink-0">
                         <Link
                           href={project.cta_url || "#"}
-                          className="inline-flex items-center gap-1 text-white hover:underline font-medium shrink-0 group/link"
+                          className="inline-flex items-center gap-1 font-normal text-white hover:underline font-medium text-xs sm:text-base shrink-0 group/link"
                         >
                           <span>{project.cta_label || "Read case"}</span>
-                          <ArrowUpRight className="w-4 h-4 stroke-[1.75]" />
+                          <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[1.75]" />
                         </Link>
                       </div>
                     </div>
@@ -204,7 +204,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
       </div>
 
       {/* 3. Interactive Pagination Dots (4 Dots matching Figma) */}
-      <div className="flex items-center justify-center gap-2.5 mt-8 sm:mt-10">
+      <div className="flex items-center justify-center gap-2.5 mt-8 sm:mt-10 h-5">
         {Array.from({ length: 4 }).map((_, idx) => {
           const isDotActive = idx === activeIndex % 4;
 
@@ -215,8 +215,8 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
               aria-label={`Go to slide ${idx + 1}`}
               onClick={() => setActiveIndex(idx)}
               className={`transition-all duration-300 rounded-full outline-none ${isDotActive
-                  ? "w-3.5 h-3.5 bg-brand-dark scale-110"
-                  : "w-2.5 h-2.5 bg-brand-dark/30 hover:bg-brand-dark/60 cursor-pointer"
+                  ? "w-4 h-4 bg-brand-dark scale-110"
+                  : "w-2 h-2 bg-brand-dark/30 hover:bg-brand-dark/60 cursor-pointer"
                 }`}
             />
           );
