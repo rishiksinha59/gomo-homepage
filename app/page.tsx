@@ -42,17 +42,44 @@ export async function generateMetadata(): Promise<Metadata> {
   const title = seo?.metaTitle || "GO MO Group | Premium Digital & Brand Experience";
   const description =
     seo?.metaDescription ||
-    "Managing digital products, customer experiences, and end-to-end design solutions.";
-  const keywords = seo?.keywords || "gomo, digital agency, nextjs, strapi, web development";
+    "Transforming brands with cutting-edge digital experiences, UI/UX design, and scalable web solutions.";
+  const keywords = seo?.keywords || "gomo, digital agency, nextjs, strapi, web development, brand experience";
+
+  // Extract shareImage from Strapi dynamic SEO or fallback to premium brand visual
+  const strapiMediaUrl = seo?.shareImage?.[0]?.url;
+  const ogImageUrl = strapiMediaUrl
+    ? (strapiMediaUrl.startsWith("http")
+        ? strapiMediaUrl
+        : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${strapiMediaUrl}`)
+    : "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop";
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   return {
     title,
     description,
     keywords,
+    metadataBase: new URL(siteUrl),
     openGraph: {
       title,
       description,
+      url: siteUrl,
+      siteName: "GO MO Group",
       type: "website",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImageUrl],
     },
   };
 }
