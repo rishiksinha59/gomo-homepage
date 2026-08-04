@@ -8,16 +8,18 @@ import FeaturesSection from "./components/FeaturesSection";
 import ProjectsSection from "./components/ProjectsSection";
 import NewsSection from "./components/NewsSection";
 import CtaSection from "./components/CtaSection";
-import {
-  HeroSectionData,
-  AboutSectionData,
-  BrandsSectionData,
-  IndustriesSectionData,
-  FeaturesSectionData,
-  ProjectsSectionData,
-  NewsSectionData,
-  CtaSectionData,
-} from "@/lib/types";
+import { NewsSectionData } from "@/lib/types";
+
+const SECTION_COMPONENTS: Record<string, React.ComponentType<any>> = {
+  "sections.hero-section": HeroSection,
+  "sections.about-section": AboutSection,
+  "sections.brands-section": BrandsSection,
+  "sections.industries-section": IndustriesSection,
+  "sections.features-section": FeaturesSection,
+  "sections.projects-section": ProjectsSection,
+  "sections.news-section": NewsSection,
+  "sections.cta-section": CtaSection,
+};
 
 // Requirement 5: External Public API Fetcher (JSONPlaceholder) with Graceful Fallback
 async function getExternalNewsData() {
@@ -48,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Extract shareImage from Strapi dynamic SEO (handles both Single Media object & Multiple Media array)
   const shareImageObj = Array.isArray(seo?.shareImage) ? seo?.shareImage[0] : seo?.shareImage;
   const strapiMediaUrl = shareImageObj?.url;
-  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
+  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "https://gomo-cms.onrender.com";
 
   const ogImageUrl = strapiMediaUrl
     ? (strapiMediaUrl.startsWith("http")
@@ -103,41 +105,26 @@ export default async function Home() {
   return (
     <div className="w-full flex flex-col gap-[120px]">
       {sections.map((section, index) => {
+        const Component = SECTION_COMPONENTS[section.__component];
+
+        // Gracefully ignore unknown or unhandled dynamic zone components
+        if (!Component) return null;
+
         const uniqueKey =
           (section as { documentId?: string }).documentId ||
           `${section.__component}-${section.id || index}-${index}`;
 
-        if (section.__component === "sections.hero-section") {
-          return <HeroSection key={uniqueKey} data={section as HeroSectionData} />;
-        }
-        if (section.__component === "sections.about-section") {
-          return <AboutSection key={uniqueKey} data={section as AboutSectionData} />;
-        }
-        if (section.__component === "sections.brands-section") {
-          return <BrandsSection key={uniqueKey} data={section as BrandsSectionData} />;
-        }
-        if (section.__component === "sections.industries-section") {
-          return <IndustriesSection key={uniqueKey} data={section as IndustriesSectionData} />;
-        }
-        if (section.__component === "sections.features-section") {
-          return <FeaturesSection key={uniqueKey} data={section as FeaturesSectionData} />;
-        }
-        if (section.__component === "sections.projects-section") {
-          return <ProjectsSection key={uniqueKey} data={section as ProjectsSectionData} />;
-        }
         if (section.__component === "sections.news-section") {
           return (
-            <NewsSection
+            <Component
               key={uniqueKey}
               data={section as NewsSectionData}
               externalPosts={externalPosts}
             />
           );
         }
-        if (section.__component === "sections.cta-section") {
-          return <CtaSection key={uniqueKey} data={section as CtaSectionData} />;
-        }
-        return null;
+
+        return <Component key={uniqueKey} data={section} />;
       })}
     </div>
   );
