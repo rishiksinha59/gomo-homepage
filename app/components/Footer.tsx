@@ -54,7 +54,7 @@ export default function Footer({ data }: FooterProps) {
       {/* 1. Giant Wall-to-Wall Brand Watermark Header */}
       {data.brand_text && (
         <div className="w-full max-w-[1440px] mx-auto overflow-hidden select-none">
-          <h2 className="text-brand-watermark font-bold font-sans whitespace-nowrap leading-none text-center text-[33.125vw]">
+          <h2 className="text-brand-watermark font-bold font-sans whitespace-nowrap leading-none text-center text-[clamp(2.5rem,33.125vw,477px)]">
             {data.brand_text}
           </h2>
         </div>
