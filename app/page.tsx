@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { getHomepageData } from "@/lib/strapi";
 import HeroSection from "./components/HeroSection";
 import AboutSection from "./components/AboutSection";
@@ -18,14 +19,59 @@ import {
   CtaSectionData,
 } from "@/lib/types";
 
-export default async function Home() {
+// Requirement 5: External Public API Fetcher (JSONPlaceholder) with Graceful Fallback
+async function getExternalNewsData() {
+  try {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts?_limit=3", {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) return [];
+    const posts = await res.json();
+    return posts;
+  } catch (error) {
+    console.error("External Public API fetch failed gracefully:", error);
+    return [];
+  }
+}
+
+// Requirement 2 & Bonus: Dynamic SEO Metadata from Strapi Single Type
+export async function generateMetadata(): Promise<Metadata> {
   const homepageData = await getHomepageData();
+  const seo = homepageData?.seo;
+
+  const title = seo?.metaTitle || "GO MO Group | Premium Digital & Brand Experience";
+  const description =
+    seo?.metaDescription ||
+    "Managing digital products, customer experiences, and end-to-end design solutions.";
+  const keywords = seo?.keywords || "gomo, digital agency, nextjs, strapi, web development";
+
+  return {
+    title,
+    description,
+    keywords,
+    openGraph: {
+      title,
+      description,
+      type: "website",
+    },
+  };
+}
+
+export default async function Home() {
+  const [homepageData, externalPosts] = await Promise.all([
+    getHomepageData(),
+    getExternalNewsData(),
+  ]);
+
+  console.log(
+    `[External API Integration] Successfully fetched ${externalPosts.length} posts from JSONPlaceholder API`
+  );
+
   const sections = homepageData?.sections || [];
 
   return (
     <div className="w-full flex flex-col gap-[120px]">
       {sections.map((section, index) => {
-        // Use documentId if present on the entity, otherwise fall back to composite type-id-index key
         const uniqueKey =
           (section as { documentId?: string }).documentId ||
           `${section.__component}-${section.id || index}-${index}`;
@@ -49,7 +95,13 @@ export default async function Home() {
           return <ProjectsSection key={uniqueKey} data={section as ProjectsSectionData} />;
         }
         if (section.__component === "sections.news-section") {
-          return <NewsSection key={uniqueKey} data={section as NewsSectionData} />;
+          return (
+            <NewsSection
+              key={uniqueKey}
+              data={section as NewsSectionData}
+              externalPosts={externalPosts}
+            />
+          );
         }
         if (section.__component === "sections.cta-section") {
           return <CtaSection key={uniqueKey} data={section as CtaSectionData} />;

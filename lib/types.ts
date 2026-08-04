@@ -217,6 +217,13 @@ export type SectionData =
   | CtaSectionData
   | { id: number; __component: string; [key: string]: unknown };
 
+export interface SeoData {
+  metaTitle?: string;
+  metaDescription?: string;
+  keywords?: string;
+  shareImage?: StrapiMedia[];
+}
+
 export interface HomepageAttributes {
   id: number;
   documentId: string;
@@ -224,6 +231,7 @@ export interface HomepageAttributes {
   updatedAt: string;
   publishedAt: string;
   sections?: SectionData[];
+  seo?: SeoData;
 }
 
 export interface StrapiResponse<T> {

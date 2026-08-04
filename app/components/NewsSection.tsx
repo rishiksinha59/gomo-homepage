@@ -9,6 +9,7 @@ import Container from "./Container";
 
 interface NewsSectionProps {
   data: NewsSectionData;
+  externalPosts?: Array<{ id: number; title: string; body: string }>;
 }
 
 /**
@@ -28,10 +29,22 @@ function formatDate(dateStr?: string): string {
   }
 }
 
-export default function NewsSection({ data }: NewsSectionProps) {
+export default function NewsSection({ data, externalPosts }: NewsSectionProps) {
   if (!data) return null;
 
-  const articles = data.articles || [];
+  // Primary: Strapi CMS articles. Secondary fallback: External JSONPlaceholder API posts
+  const articles = (data.articles && data.articles.length > 0)
+    ? data.articles
+    : (externalPosts || []).map((post) => ({
+        id: post.id,
+        title: post.title,
+        date: new Date().toISOString(),
+        badge: "External Insight",
+        cta_label: "Read article",
+        cta_url: `/news/${post.id}`,
+        image: null,
+      }));
+
   if (articles.length === 0) return null;
 
   return (

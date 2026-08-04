@@ -11,8 +11,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "GOMO Homepage",
-  description: "GOMO Assignment",
+  title: {
+    default: "GO MO Group | Premium Digital & Brand Experience",
+    template: "%s | GO MO Group",
+  },
+  description:
+    "Managing digital products, customer experiences, and end-to-end design solutions.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
 };
 
 export default async function RootLayout({
