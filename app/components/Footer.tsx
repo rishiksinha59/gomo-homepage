@@ -103,7 +103,7 @@ export default function Footer({ data }: FooterProps) {
               )}
 
               {data.email && (
-                <a href={`mailto:${data.email}`} className="hover:text-white transition-colors block underline underline-offset-4">
+                <a href={`mailto:${data.email}`} className="hover:text-white transition-colors block">
                   {data.email}
                 </a>
               )}
@@ -113,7 +113,7 @@ export default function Footer({ data }: FooterProps) {
                   <span className="text-brand-cream/70 block mb-2">
                     Visiting address
                   </span>
-                  <p className="whitespace-pre-line text-brand-cream/70 leading-relaxed">
+                  <p className="whitespace-pre-line text-brand-cream/70">
                     {data.visiting_address}
                   </p>
                 </div>
@@ -121,10 +121,10 @@ export default function Footer({ data }: FooterProps) {
 
               {data.postal_address && (
                 <div>
-                  <span className="text-white/50 font-medium block">
+                  <span className="text-white/50 font-medium block mb-2">
                     Postal address
                   </span>
-                  <p className="whitespace-pre-line text-white/70 leading-relaxed">
+                  <p className="whitespace-pre-line text-white/70">
                     {data.postal_address}
                   </p>
                 </div>
@@ -145,7 +145,7 @@ export default function Footer({ data }: FooterProps) {
                   <input
                     type="email"
                     placeholder="Email address"
-                    className="w-full bg-transparent text-sm text-white placeholder-white/50 focus:outline-none pr-8 font-sans"
+                    className="w-full bg-transparent text-brand-cream placeholder-brand-cream focus:outline-none pr-8 font-sans"
                     required
                   />
                   <button
