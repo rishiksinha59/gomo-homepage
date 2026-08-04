@@ -60,7 +60,7 @@ export async function getGlobalData(): Promise<GlobalAttributes | null> {
       "populate[footer][populate][columns][populate]=links",
       "populate[footer][populate][social_links]=*",
       "populate[footer][populate][certification_logos]=true",
-      "populate[footer][populate][CopyRightText]=true",
+      "populate[footer][populate][CopyRightText][populate]=legal_links",
     ].join("&");
 
     const response = await fetchStrapi<StrapiResponse<GlobalAttributes>>(`/api/global?${query}`);
