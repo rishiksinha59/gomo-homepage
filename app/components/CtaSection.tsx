@@ -21,7 +21,7 @@ export default function CtaSection({ data }: CtaSectionProps) {
       <Container>
         
         {/* Full Card Container with 1280px max-width matching Figma */}
-        <div className="w-full max-w-[1280px] mx-auto h-[520px] sm:h-[600px] md:h-[640px] rounded-[16px] overflow-hidden relative text-white flex flex-col justify-center items-center text-center p-8 shadow-xl bg-zinc-900 group">
+        <div className="w-full max-w-[1280px] mx-auto h-[520px] sm:h-[600px] md:h-[656px] rounded-[10px] overflow-hidden relative text-white flex flex-col justify-center items-center text-center p-8 shadow-xl group">
           
           {/* Background Image Layer */}
           {bgImageUrl && (
@@ -42,14 +42,14 @@ export default function CtaSection({ data }: CtaSectionProps) {
           <div className="relative z-20 flex flex-col items-center justify-center max-w-[750px] mx-auto text-center px-4">
             
             {/* Top Brand Logo Icon */}
-            <div className="mb-6 sm:mb-8 text-white">
+            <div className="text-white">
               {logoUrl ? (
                 <Image
                   src={logoUrl}
                   alt="Brand Logo"
-                  width={40}
-                  height={48}
-                  className="w-10 h-12 object-contain mx-auto"
+                  width={148}
+                  height={148}
+                  className=" object-contain mx-auto"
                 />
               ) : (
                 <svg
@@ -64,7 +64,7 @@ export default function CtaSection({ data }: CtaSectionProps) {
 
             {/* Main Heading in Larken Thin */}
             {data.heading && (
-              <h2 className="font-larken font-thin text-3xl sm:text-5xl md:text-[56px] leading-[1.15] text-white tracking-tight mb-8 max-w-[680px]">
+              <h2 className="font-larken font-thin text-3xl sm:text-4xl md:text-5xl leading-[1.25] text-white tracking-tight mb-8 mt-6 max-w-[632px]">
                 {data.heading}
               </h2>
             )}

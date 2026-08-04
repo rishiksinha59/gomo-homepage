@@ -37,7 +37,7 @@ export default function NewsSection({ data }: NewsSectionProps) {
   return (
     <section className="w-full">
       <Container>
-        
+
         {/* 1. Header Section */}
         <div className="text-center max-w-[880px] mx-auto mb-12 sm:mb-16 flex flex-col items-center">
           {data.tagline && (
@@ -47,7 +47,7 @@ export default function NewsSection({ data }: NewsSectionProps) {
           )}
 
           {data.heading && (
-            <h2 className="font-sans text-2xl sm:text-3xl md:text-[40px] text-center font-normal leading-[1.25] text-brand-dark tracking-tight mb-4">
+            <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl text-center font-normal leading-[1.25] text-brand-dark tracking-tight mb-6">
               {data.heading}
             </h2>
           )}
@@ -55,7 +55,7 @@ export default function NewsSection({ data }: NewsSectionProps) {
           {data.cta_label && (
             <Link
               href={data.cta_url || "/news"}
-              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
+              className="inline-flex items-center gap-1.5 text-xs  font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
             >
               <span>{data.cta_label}</span>
               <ArrowRight className="w-3.5 h-3.5 stroke-[1.75]" />
@@ -64,7 +64,7 @@ export default function NewsSection({ data }: NewsSectionProps) {
         </div>
 
         {/* 2. Responsive 3-Column Articles Grid with 1280px max-width */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch w-full max-w-[1280px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-stretch w-full max-w-[1280px] mx-auto">
           {articles.map((article, idx) => {
             const imageUrl = getStrapiMedia(article.image?.url);
             const formattedDate = formatDate(article.date);
@@ -72,7 +72,7 @@ export default function NewsSection({ data }: NewsSectionProps) {
             return (
               <div
                 key={`${article.id || idx}-${idx}`}
-                className="relative rounded-[16px] overflow-hidden min-h-[460px] md:h-[500px] w-full shadow-lg text-white bg-zinc-900 group cursor-pointer transition-all duration-300"
+                className="relative rounded-[10px] overflow-hidden min-h-[416px] md:h-[416px] w-full shadow-lg text-white group cursor-pointer transition-all duration-300"
               >
                 {/* Top Badge Pill */}
                 {article.badge && (
@@ -97,9 +97,9 @@ export default function NewsSection({ data }: NewsSectionProps) {
 
                 {/* Frosted Glass Overlay (Auto-height bottom anchored) */}
                 <div className="absolute inset-x-0 bottom-0 z-10 bg-black/35 backdrop-blur-xl border-t border-white/15 flex flex-col justify-between">
-                  
+
                   {/* Article Title */}
-                  <div className="p-6 pb-4">
+                  <div className="px-6 pt-6 pb-10">
                     {article.title && (
                       <h3 className="font-sans text-lg sm:text-xl font-normal leading-snug tracking-tight text-white mb-1">
                         {article.title}
@@ -107,19 +107,23 @@ export default function NewsSection({ data }: NewsSectionProps) {
                     )}
                   </div>
 
-                  {/* Bottom Info & CTA Bar */}
-                  <div className="border-t border-white/15 flex items-center justify-between h-[52px] px-6 text-xs sm:text-sm font-sans text-white/90">
-                    <span className="text-white/80 font-sans text-xs sm:text-sm">
-                      {formattedDate}
-                    </span>
+                  {/* Bottom Info & CTA Bar with vertical divider line */}
+                  <div className="border-t border-white/15 flex items-stretch h-[52px] font-sans text-white/90">
+                    <div className="flex-1 px-6 flex items-center border-r border-white/15 min-w-0">
+                      <span className="text-white/80 font-sans text-xs sm:text-sm">
+                        {formattedDate}
+                      </span>
+                    </div>
 
-                    <Link
-                      href={article.cta_url || "#"}
-                      className="inline-flex items-center gap-1 text-white hover:underline font-medium shrink-0 group/link"
-                    >
-                      <span>{article.cta_label || "Read more"}</span>
-                      <ArrowUpRight className="w-4 h-4 stroke-[1.75]" />
-                    </Link>
+                    <div className="px-6 flex items-center shrink-0">
+                      <Link
+                        href={article.cta_url || "#"}
+                        className="inline-flex items-center gap-1 text-white hover:underline font-medium shrink-0 group/link"
+                      >
+                        <span>{article.cta_label || "Read more"}</span>
+                        <ArrowUpRight className="w-4 h-4 stroke-[1.75]" />
+                      </Link>
+                    </div>
                   </div>
 
                 </div>
