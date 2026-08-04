@@ -46,7 +46,7 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-[15px] items-stretch w-full max-w-[1279px] mx-auto">
 
           {/* Left Column: Interactive Industry Selection Menu */}
-          <div className="bg-brand-dark rounded-[10px] p-8 md:p-12 flex flex-col justify-between lg:h-[570px] w-full shadow-lg text-white">
+          <div className="bg-brand-dark rounded-[10px] p-5 sm:p-8 md:p-12 flex flex-col justify-between lg:h-[570px] w-full shadow-lg text-white">
             <div className="flex flex-col space-y-3 lg:space-y-4">
               {industries.map((item, index) => {
                 const isActive = index === activeIndex;
@@ -62,16 +62,18 @@ export default function IndustriesSection({ data }: IndustriesSectionProps) {
                     <span
                       className={`font-larken transition-colors duration-200 leading-[1.3] ${
                         isActive
-                          ? "text-2xl sm:text-3xl md:text-[42px] text-white font-normal"
-                          : "text-2xl sm:text-3xl md:text-[42px] text-white/35 group-hover:text-white/70 font-normal"
+                          ? "text-xl sm:text-2xl md:text-[42px] text-white font-normal"
+                          : "text-xl sm:text-2xl md:text-[42px] text-white/35 group-hover:text-white/70 font-normal"
                       }`}
                     >
                       {item.name}
                     </span>
 
-                    {isActive && (
-                      <ArrowRight className="w-6 h-6 text-white stroke-[1.75] shrink-0 ml-4" />
-                    )}
+                    <ArrowRight
+                      className={`w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[1.75] shrink-0 ml-3 sm:ml-4 transition-all duration-200 ${
+                        isActive ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-1 pointer-events-none"
+                      }`}
+                    />
                   </button>
                 );
               })}
