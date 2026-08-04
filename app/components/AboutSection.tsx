@@ -82,10 +82,10 @@ export default function AboutSection({ data }: AboutSectionProps) {
 
           </div>
 
-          {/* 3. Bottom Stats Row (Flexbox with border divider) */}
+          {/* 3. Bottom Stats Row (2-col grid on mobile, flex justify-between on desktop) */}
           {data.stats && data.stats.length > 0 && (
             <div className="border-t border-brand-dark/35 mt-10 pt-6">
-              <div className="flex flex-wrap items-center justify-between gap-8 md:gap-12">
+              <div className="max-sm:grid   max-sm:grid-cols-2 flex flex-wrap items-center justify-between gap-x-20 gap-y-6 sm:gap-8 md:gap-12">
                 {data.stats.map((stat, idx) => (
                   <div key={`${stat.id || idx}-${idx}`} className="flex flex-col text-left gap-1">
                     {stat.value && (
