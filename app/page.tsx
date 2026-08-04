@@ -45,12 +45,15 @@ export async function generateMetadata(): Promise<Metadata> {
     "Transforming brands with cutting-edge digital experiences, UI/UX design, and scalable web solutions.";
   const keywords = seo?.keywords || "gomo, digital agency, nextjs, strapi, web development, brand experience";
 
-  // Extract shareImage from Strapi dynamic SEO or fallback to premium brand visual
-  const strapiMediaUrl = seo?.shareImage?.[0]?.url;
+  // Extract shareImage from Strapi dynamic SEO (handles both Single Media object & Multiple Media array)
+  const shareImageObj = Array.isArray(seo?.shareImage) ? seo?.shareImage[0] : seo?.shareImage;
+  const strapiMediaUrl = shareImageObj?.url;
+  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "https://gomo-cms.onrender.com";
+
   const ogImageUrl = strapiMediaUrl
     ? (strapiMediaUrl.startsWith("http")
         ? strapiMediaUrl
-        : `${process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337"}${strapiMediaUrl}`)
+        : `${strapiBaseUrl}${strapiMediaUrl.startsWith("/") ? "" : "/"}${strapiMediaUrl}`)
     : "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop";
 
   const siteUrl =

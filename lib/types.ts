@@ -221,7 +221,7 @@ export interface SeoData {
   metaTitle?: string;
   metaDescription?: string;
   keywords?: string;
-  shareImage?: StrapiMedia[];
+  shareImage?: StrapiMedia[] | StrapiMedia;
 }
 
 export interface HomepageAttributes {
