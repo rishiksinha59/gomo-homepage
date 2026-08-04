@@ -22,20 +22,20 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
   return (
     <section className="w-full">
       <Container>
-        
+
         {/* Outer Card Container with max-w-[1280px] container */}
         <div className="w-full max-w-[1280px] mx-auto bg-[#B8D1D1] rounded-[16px] overflow-hidden text-brand-dark shadow-xs border border-brand-dark/10">
-          
+
           {/* 1. Top Header Area */}
-          <div className="pt-12 sm:pt-16 pb-12 sm:pb-16 px-6 sm:px-10 text-center max-w-[850px] mx-auto flex flex-col items-center">
+          <div className="pt-12 sm:pt-20 pb-12 sm:pb-16 px-6 sm:px-10 text-center max-w-[850px] mx-auto flex flex-col items-center">
             {data.tagline && (
-              <p className="font-larken font-thin text-dark text-sm sm:text-base mb-3.5 tracking-wide">
+              <p className="font-larken font-thin text-dark text-sm sm:text-base mb-4 tracking-wide">
                 {data.tagline}
               </p>
             )}
 
             {data.heading && (
-              <h2 className="font-sans text-2xl sm:text-3xl md:text-[40px] text-center font-normal leading-[1.25] text-brand-dark tracking-tight mb-5">
+              <h2 className="font-sans text-2xl sm:text-3xl md:text-4xl text-center font-normal leading-[1.25] px-10 text-brand-dark tracking-tight mb-6">
                 {data.heading}
               </h2>
             )}
@@ -43,7 +43,7 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
             {data.cta_label && (
               <Link
                 href={data.cta_url || "/contact"}
-                className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
+                className="inline-flex items-center gap-1.5 text-xs  font-normal text-brand-dark underline underline-offset-4 hover:opacity-80 transition-opacity"
               >
                 <span>{data.cta_label}</span>
                 <ArrowRight className="w-3.5 h-3.5 stroke-[1.75]" />
@@ -61,7 +61,7 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
                 return (
                   <div
                     key={`${feature.id || idx}-${idx}`}
-                    className="p-8 lg:p-10 flex flex-col justify-between h-full min-h-[250px]"
+                    className="p-6 flex flex-col justify-between h-full min-h-[300px]"
                   >
                     {/* Top Icon */}
                     <div className="mb-10 text-brand-dark">
@@ -69,24 +69,24 @@ export default function FeaturesSection({ data }: FeaturesSectionProps) {
                         <Image
                           src={iconUrl}
                           alt={feature.title || "Feature Icon"}
-                          width={28}
-                          height={28}
-                          className="w-7 h-7 object-contain"
+                          width={32}
+                          height={32}
+                          className="w-8 h-8 object-contain"
                         />
                       ) : (
-                        <FallbackIcon className="w-7 h-7 stroke-[1.75]" />
+                        <FallbackIcon className="w-8 h-8 stroke-[1.75]" />
                       )}
                     </div>
 
                     {/* Bottom Title & Description */}
                     <div>
                       {feature.title && (
-                        <h3 className="font-sans font-medium text-lg sm:text-xl text-brand-dark tracking-tight mb-2.5">
+                        <h3 className="font-sans font-medium text-lg sm:text-xl text-brand-dark tracking-tight mb-3">
                           {feature.title}
                         </h3>
                       )}
                       {feature.description && (
-                        <p className="font-sans text-xs sm:text-sm text-brand-dark/80 leading-relaxed">
+                        <p className="font-sans text-brand-dark/80 leading-relaxed">
                           {feature.description}
                         </p>
                       )}

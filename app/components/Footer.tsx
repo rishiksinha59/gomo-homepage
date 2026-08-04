@@ -51,7 +51,7 @@ export default function Footer({ data }: FooterProps) {
       {/* 1. Giant Brand Header Banner */}
       {data.brand_text && (
         <div className="w-full overflow-hidden px-6 pt-10 md:pt-16 pb-6 border-b border-white/10">
-          <h1 className="text-[19vw] leading-[0.8] font-black tracking-tighter text-brand-watermark select-none text-center uppercase">
+          <h1 className="text-[] leading-[0.8] font-black tracking-tighter text-brand-watermark select-none text-center uppercase">
             {data.brand_text}
           </h1>
         </div>
