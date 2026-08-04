@@ -87,7 +87,7 @@ export async function getHomepageData(): Promise<HomepageAttributes | null> {
       "populate[sections][on][sections.projects-section][populate][projects][populate]=image",
       "populate[sections][on][sections.news-section][populate][articles][populate]=image",
       "populate[sections][on][sections.cta-section][populate]=*",
-      "populate[seo]=true",
+      "populate[seo][populate]=*",
     ].join("&");
 
     const response = await fetchStrapi<StrapiResponse<HomepageAttributes>>(`/api/homepage?${query}`);
