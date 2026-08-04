@@ -48,7 +48,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Extract shareImage from Strapi dynamic SEO (handles both Single Media object & Multiple Media array)
   const shareImageObj = Array.isArray(seo?.shareImage) ? seo?.shareImage[0] : seo?.shareImage;
   const strapiMediaUrl = shareImageObj?.url;
-  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "https://gomo-cms.onrender.com";
+  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL;
 
   const ogImageUrl = strapiMediaUrl
     ? (strapiMediaUrl.startsWith("http")
@@ -56,13 +56,7 @@ export async function generateMetadata(): Promise<Metadata> {
         : `${strapiBaseUrl}${strapiMediaUrl.startsWith("/") ? "" : "/"}${strapiMediaUrl}`)
     : "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1200&auto=format&fit=crop";
 
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : null) ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-    "http://localhost:3000";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
   return {
     title,
