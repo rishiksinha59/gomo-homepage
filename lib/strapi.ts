@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { GlobalAttributes, HomepageAttributes, StrapiResponse } from "./types";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
@@ -34,7 +35,7 @@ export async function fetchStrapi<T>(
         ? { Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}` }
         : {}),
     },
-    next: { revalidate: 60 }, // Default revalidation strategy for ISR
+    next: { revalidate: 3600, tags: ["strapi"] }, // High-performance ISR Edge caching + On-demand webhook tag
     ...options,
   };
 
@@ -51,9 +52,9 @@ export async function fetchStrapi<T>(
 }
 
 /**
- * Fetch Global Single Type data with deep populate for Navbar & Footer
+ * Fetch Global Single Type data with deep populate for Navbar & Footer (Deduplicated)
  */
-export async function getGlobalData(): Promise<GlobalAttributes | null> {
+export const getGlobalData = cache(async (): Promise<GlobalAttributes | null> => {
   try {
     const query = [
       "populate[navbar][populate]=*",
@@ -69,12 +70,12 @@ export async function getGlobalData(): Promise<GlobalAttributes | null> {
     console.error("Error fetching global Strapi data:", error);
     return null;
   }
-}
+});
 
 /**
- * Fetch Homepage Single Type data with deep dynamic zone population
+ * Fetch Homepage Single Type data with deep dynamic zone population (Deduplicated)
  */
-export async function getHomepageData(): Promise<HomepageAttributes | null> {
+export const getHomepageData = cache(async (): Promise<HomepageAttributes | null> => {
   try {
     const query = [
       "populate[sections][on][sections.hero-section][populate]=*",
@@ -96,4 +97,4 @@ export async function getHomepageData(): Promise<HomepageAttributes | null> {
     console.error("Error fetching homepage Strapi data:", error);
     return null;
   }
-}
+});

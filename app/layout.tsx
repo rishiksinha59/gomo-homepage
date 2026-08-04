@@ -32,6 +32,19 @@ export default async function RootLayout({
       lang="en"
       className={`${inter.variable} h-full antialiased`}
     >
+      {process.env.NEXT_PUBLIC_STRAPI_URL && (
+        <head>
+          <link
+            rel="preconnect"
+            href={process.env.NEXT_PUBLIC_STRAPI_URL}
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="dns-prefetch"
+            href={process.env.NEXT_PUBLIC_STRAPI_URL}
+          />
+        </head>
+      )}
       <body className="min-h-full flex flex-col bg-brand-cream font-sans">
         <Navbar data={globalData?.navbar} />
         <main className="flex-1">{children}</main>

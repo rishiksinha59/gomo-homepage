@@ -50,7 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
   // Extract shareImage from Strapi dynamic SEO (handles both Single Media object & Multiple Media array)
   const shareImageObj = Array.isArray(seo?.shareImage) ? seo?.shareImage[0] : seo?.shareImage;
   const strapiMediaUrl = shareImageObj?.url;
-  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "https://gomo-cms.onrender.com";
+  const strapiBaseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 
   const ogImageUrl = strapiMediaUrl
     ? (strapiMediaUrl.startsWith("http")
@@ -96,8 +96,10 @@ export default async function Home() {
     getExternalNewsData(),
   ]);
 
+
+  // Server-side log: visible in Vercel Function Logs to verify external API integration
   console.log(
-    `[External API Integration] Successfully fetched ${externalPosts.length} posts from JSONPlaceholder API`
+    `[External API] Fetched ${externalPosts.length} posts from JSONPlaceholder (fallback for NewsSection)`
   );
 
   const sections = homepageData?.sections || [];
