@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { BrandsSectionData } from "@/lib/types";
 import { getStrapiMedia } from "@/lib/strapi";

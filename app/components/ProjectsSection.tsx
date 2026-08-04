@@ -167,7 +167,7 @@ export default function ProjectsSection({ data }: ProjectsSectionProps) {
                   ) : null}
 
                   {/* Frosted Glass Overlay */}
-                  <div className="absolute inset-x-0 bottom-0 z-10 bg-black/35 backdrop-blur-xl border-t border-white/15 flex flex-col justify-between pointer-events-auto">
+                  <div className="absolute inset-x-0 bottom-0 z-10 bg-black/40 backdrop-blur-sm border-t border-white/15 flex flex-col justify-between pointer-events-auto">
                     {/* Title */}
                     <div className="px-4 sm:px-6 py-3 sm:py-4">
                       {project.title && (

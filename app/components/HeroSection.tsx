@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { ArrowDown } from "lucide-react";
 import { HeroSectionData } from "@/lib/types";
@@ -28,6 +26,9 @@ export default function HeroSection({ data }: HeroSectionProps) {
               alt={data.heading || "Hero Background"}
               fill
               priority
+              fetchPriority="high"
+              loading="eager"
+              quality={80}
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 1360px"
               className="object-cover object-center"
             />

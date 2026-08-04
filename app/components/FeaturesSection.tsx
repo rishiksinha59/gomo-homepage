@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { Puzzle, Cog, Award, Target, ArrowRight } from "lucide-react";

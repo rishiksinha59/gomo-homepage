@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
@@ -109,7 +107,7 @@ export default function NewsSection({ data, externalPosts }: NewsSectionProps) {
                 ) : null}
 
                 {/* Frosted Glass Overlay (Auto-height bottom anchored) */}
-                <div className="absolute inset-x-0 bottom-0 z-10 bg-black/35 backdrop-blur-xl border-t border-white/15 flex flex-col justify-between">
+                <div className="absolute inset-x-0 bottom-0 z-10 bg-black/35 backdrop-blur-sm border-t border-white/15 flex flex-col justify-between">
 
                   {/* Article Title */}
                   <div className="px-4 sm:px-6 pt-4 sm:pt-6 pb-6 sm:pb-8">

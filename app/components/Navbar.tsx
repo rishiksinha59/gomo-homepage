@@ -1,18 +1,15 @@
-"use client";
-
 import Link from "next/link";
-import { useState } from "react";
-import { ChevronDown, ShoppingCart, Menu, X } from "lucide-react";
+import Image from "next/image";
+import { ChevronDown } from "lucide-react";
 import { NavbarData } from "@/lib/types";
 import Container from "./Container";
+import MobileNavDrawer from "./MobileNavDrawer";
 
 interface NavbarProps {
   data?: NavbarData | null;
 }
 
 export default function Navbar({ data }: NavbarProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   if (!data) return null;
 
   return (
@@ -78,66 +75,22 @@ export default function Navbar({ data }: NavbarProps) {
             <button
               type="button"
               aria-label="Shopping Cart"
-              className="p-1 text-brand-dark hover:opacity-80 transition-opacity"
+              className="p-1 text-brand-dark hover:opacity-80 transition-opacity flex items-center justify-center"
             >
-              <ShoppingCart className="w-5 h-5 stroke-[1.5]" />
+              <Image
+                src="/cart.svg"
+                alt="Shopping Cart"
+                width={22}
+                height={21}
+                className="w-[22px] h-[21px] shrink-0"
+              />
             </button>
           )}
 
-          {/* Mobile & Tablet Hamburger Toggle */}
-          <button
-            type="button"
-            aria-label="Toggle navigation menu"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1 text-brand-dark hover:opacity-80 transition-opacity xl:hidden"
-          >
-            {mobileMenuOpen ? (
-              <X className="w-6 h-6 stroke-[1.5]" />
-            ) : (
-              <Menu className="w-6 h-6 stroke-[1.5]" />
-            )}
-          </button>
+          {/* Mobile & Tablet Hamburger Toggle & Drawer */}
+          <MobileNavDrawer data={data} />
         </div>
       </Container>
-
-      {/* Mobile & Tablet Drawer Menu (< 1280px) */}
-      {mobileMenuOpen && (
-        <div className="xl:hidden bg-brand-cream border-t border-brand-dark/10 px-4 py-6 shadow-md transition-all">
-          <Container className="flex flex-col gap-5">
-            {/* Nav links */}
-            {data.nav_links && data.nav_links.length > 0 && (
-              <nav className="flex flex-col gap-4">
-                {data.nav_links.map((link) => (
-                  <Link
-                    key={link.id}
-                    href={link.url || "#"}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="text-brand-dark text-sm font-medium hover:opacity-75 flex items-center justify-between py-1 transition-opacity"
-                  >
-                    <span>{link.label}</span>
-                    {link.has_dropdown && (
-                      <ChevronDown className="w-4 h-4 opacity-70 stroke-[1.75]" />
-                    )}
-                  </Link>
-                ))}
-              </nav>
-            )}
-
-            {/* Mobile Actions */}
-            <div className="flex items-center justify-between pt-2">
-              {data.show_language_switcher && (
-                <button
-                  type="button"
-                  className="flex items-center gap-1 text-sm font-medium text-brand-dark opacity-80"
-                >
-                  <span>Language: English</span>
-                  <ChevronDown className="w-4 h-4 opacity-70" />
-                </button>
-              )}
-            </div>
-          </Container>
-        </div>
-      )}
     </header>
   );
 }
